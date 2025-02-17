@@ -3,6 +3,7 @@ import "./globals.css";
 
 import localFont from "next/font/local";
 import { ReactNode } from "react";
+import { Toaster } from "@/components/ui/toaster";
 
 const ibmPlexSans = localFont({
   src: [
@@ -22,24 +23,21 @@ const bebasNeue = localFont({
 
 export const metadata: Metadata = {
   title: "Bookwize",
-  description: "Bookwize is a platform for book lovers to manage their books online.",
+  description:
+    "Bookwize is a platform for book lovers to manage their books online.",
 };
 
-const RootLayout = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="en">
       <body
         className={`${ibmPlexSans.className} ${bebasNeue.variable} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;
-

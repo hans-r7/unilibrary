@@ -37,8 +37,8 @@ const AuthForm = <T extends FieldValues>({
   type,
   schema,
   defaultValues,
-//   onSubmit,
-}: Props<T>) => {
+}: //   onSubmit,
+Props<T>) => {
   const isSignIn = type === "SIGN_IN";
 
   const form: UseFormReturn<T> = useForm({
@@ -46,7 +46,7 @@ const AuthForm = <T extends FieldValues>({
     defaultValues: defaultValues as DefaultValues<T>,
   });
 
-//   const handleSubmit: SubmitHandler<T> = async (data) => {};
+  //   const handleSubmit: SubmitHandler<T> = async (data) => {};
 
   return (
     <div className="flex flex-col gap-4">
@@ -60,7 +60,7 @@ const AuthForm = <T extends FieldValues>({
       </p>
       <Form {...form}>
         <form
-        //   onSubmit={form.handleSubmit(handleSubmit)}
+          //   onSubmit={form.handleSubmit(handleSubmit)}
           className="space-y-6 w-full"
         >
           {Object.keys(defaultValues).map((field) => (
@@ -75,7 +75,7 @@ const AuthForm = <T extends FieldValues>({
                   </FormLabel>
                   <FormControl>
                     {field.name === "universityCard" ? (
-                      <ImageUpload />
+                      <ImageUpload onFileChange={field.onChange} />
                     ) : (
                       <Input
                         required
@@ -93,9 +93,7 @@ const AuthForm = <T extends FieldValues>({
             />
           ))}
           <Button type="submit" className="form-btn">
-            {
-                isSignIn ? "Sign in" : "Sign up"
-            }
+            {isSignIn ? "Sign in" : "Sign up"}
           </Button>
         </form>
       </Form>
