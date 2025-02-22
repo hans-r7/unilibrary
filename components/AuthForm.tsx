@@ -25,6 +25,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
 import ImageUpload from "./ImageUpload";
+import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -37,8 +39,10 @@ const AuthForm = <T extends FieldValues>({
   type,
   schema,
   defaultValues,
-}: //   onSubmit,
-Props<T>) => {
+  onSubmit,
+}: Props<T>) => {
+  const router = useRouter();
+
   const isSignIn = type === "SIGN_IN";
 
   const form: UseFormReturn<T> = useForm({
@@ -46,7 +50,24 @@ Props<T>) => {
     defaultValues: defaultValues as DefaultValues<T>,
   });
 
-  //   const handleSubmit: SubmitHandler<T> = async (data) => {};
+  const handleSubmit: SubmitHandler<T> = async (data) => {
+    const result = await onSubmit(data);
+
+    if (result.success) {
+      toast({
+        title: "Success",
+        description: isSignIn ? "Sign in successful!" : "Sign up successful!",
+      });
+      // Redirect to home page
+      router.push("/");
+    } else {
+      toast({
+        title: `Error ${isSignIn ? "Signing in" : "Signing up"}`,
+        description: result.error ?? "An error occurred!",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -60,7 +81,7 @@ Props<T>) => {
       </p>
       <Form {...form}>
         <form
-          //   onSubmit={form.handleSubmit(handleSubmit)}
+          onSubmit={form.handleSubmit(handleSubmit)}
           className="space-y-6 w-full"
         >
           {Object.keys(defaultValues).map((field) => (

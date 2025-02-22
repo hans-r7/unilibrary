@@ -7,9 +7,17 @@ interface Book {
   totalCopies: number;
   availableCopies: number;
   description: string;
-  coverColor: string;  // changed from color
-  coverUrl: string;    // changed from cover
-  videoUrl: string;    // changed from video
+  coverColor: string; // changed from color
+  coverUrl: string; // changed from cover
+  videoUrl: string; // changed from video
   summary: string;
   isLoanedBook?: boolean;
+}
+
+interface AuthCredentials {
+  fullName: string;
+  email: string;
+  password: string;
+  universityId: number;
+  universityCard: string;
 }
