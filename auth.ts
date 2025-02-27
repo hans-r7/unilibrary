@@ -3,7 +3,7 @@ import NextAuth, { User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { users } from "./database/schema";
 import { db } from "./database/drizzle";
-import compare from "bcryptjs";
+import { compare } from "bcryptjs";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
