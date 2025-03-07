@@ -34,7 +34,10 @@ export const bookSchema = z.object({
     .trim()
     .min(2, "Genre is too short")
     .max(50, "Genre is too long"),
-  rating: z.number().min(1, "Rating is too low").max(5, "Rating is too high"),
+  rating: z.coerce
+    .number()
+    .min(1, "Rating is too low")
+    .max(5, "Rating is too high"),
   totalCopies: z.coerce.number().int().positive().lte(10000),
   coverUrl: z.string().nonempty("Cover URL is required"),
   coverColor: z
