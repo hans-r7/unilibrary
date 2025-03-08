@@ -15,6 +15,13 @@
       "when": 1741380951943,
       "tag": "0001_amusing_salo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1741417703909,
+      "tag": "0002_stiff_hydra",
+      "breakpoints": true
     }
   ]
 }

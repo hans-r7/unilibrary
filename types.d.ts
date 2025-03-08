@@ -1,5 +1,5 @@
 interface Book {
-  id: number;
+  id: string;
   title: string;
   author: string;
   genre: string;
@@ -11,7 +11,7 @@ interface Book {
   coverUrl: string; // changed from cover
   videoUrl: string; // changed from video
   summary: string;
-  isLoanedBook?: boolean;
+  createdAt: Date;
 }
 
 interface AuthCredentials {
@@ -33,4 +33,9 @@ interface BookParams {
   totalCopies: number;
   videoUrl: string;
   summary: string;
+}
+
+interface BorrowBookParams {
+  userId: string;
+  bookId: string;
 }

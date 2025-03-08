@@ -12,7 +12,7 @@ const Page = () => {
         </Button>
       </div>
       <div className="mt-7 w-full overflow-hidden">
-        <p>Table</p>
+        <p>List of all Books</p>
       </div>
     </section>
   );
