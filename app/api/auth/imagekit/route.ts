@@ -5,13 +5,13 @@ import { NextResponse } from "next/server";
 
 const {
   env: {
-    imagekit: { publicKey, privateKey, urlEndpoint },
+    imagekit: { publicKey, urlEndpoint },
   },
 } = config;
 
 const imagekit = new ImageKit({
   publicKey,
-  privateKey,
+  privateKey: process.env.IMAGEKIT_PRIVATE_KEY!,
   urlEndpoint,
 });
 
