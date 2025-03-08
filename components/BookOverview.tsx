@@ -29,8 +29,6 @@ const BookOverview = async ({
     .where(eq(users.id, userId))
     .limit(1);
 
-  if (!user) return null;
-
   const borrowingEligibility = {
     isEligible: availableCopies > 0 && user?.status === "APPROVED",
     message:
