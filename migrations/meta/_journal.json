@@ -8,6 +8,20 @@
       "when": 1740201884216,
       "tag": "0000_careful_mentallo",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1741380951943,
+      "tag": "0001_amusing_salo",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1741417703909,
+      "tag": "0002_stiff_hydra",
+      "breakpoints": true
     }
   ]
 }
