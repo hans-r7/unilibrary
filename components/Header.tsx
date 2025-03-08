@@ -1,12 +1,13 @@
 "use client";
 
-import { cn, getInitials } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
-import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Session } from "next-auth";
+import { cn, getInitials } from "@/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { HeaderSignOut } from "./HeaderSignOut";
 
 const Header = ({ session }: { session: Session }) => {
   const pathname = usePathname();
@@ -16,18 +17,8 @@ const Header = ({ session }: { session: Session }) => {
       <Link href="/">
         <Image src="/icons/logo.svg" alt="logo" width={40} height={40} />
       </Link>
-      <ul className="flex flex-row items-center gap-8">
-        <li>
-          <Link
-            href="/library"
-            className={cn(
-              "text-base cursor-pointer capitalize",
-              pathname === "/library" ? "text-light-200" : "text-light-100"
-            )}
-          >
-            Library
-          </Link>
-        </li>
+
+      <ul className="flex flex-row gap-8">
         <li>
           <Link
             href="/my-profile"
@@ -43,6 +34,14 @@ const Header = ({ session }: { session: Session }) => {
               </AvatarFallback>
             </Avatar>
           </Link>
+        </li>
+        <li>
+          <form
+            action={HeaderSignOut}
+            className="mb-10"
+          >
+            <Button>Logout</Button>
+          </form>
         </li>
       </ul>
     </header>
