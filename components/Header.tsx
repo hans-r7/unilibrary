@@ -14,9 +14,12 @@ const Header = ({ session }: { session: Session }) => {
 
   return (
     <header className="my-10 flex justify-between gap-5">
-      <Link href="/">
-        <Image src="/icons/logo.svg" alt="logo" width={40} height={40} />
-      </Link>
+      <div className="flex items-center gap-5">
+        <Link href="/">
+          <Image src="/icons/logo.svg" alt="logo" width={40} height={40} />
+        </Link>
+        <p className="font-bold text-xl text-light-100">Bookwize</p>
+      </div>
 
       <ul className="flex flex-row gap-8">
         <li>
@@ -36,10 +39,7 @@ const Header = ({ session }: { session: Session }) => {
           </Link>
         </li>
         <li>
-          <form
-            action={HeaderSignOut}
-            className="mb-10"
-          >
+          <form action={HeaderSignOut} className="mb-10">
             <Button>Logout</Button>
           </form>
         </li>
