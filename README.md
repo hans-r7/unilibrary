@@ -1,38 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# University Library Management System
 
-## Getting Started
+This project is a web-based university library management system built with Next.js, TypeScript, Tailwind CSS, and Drizzle ORM. It provides features for managing books, users, and borrowing records.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Book Management:**
+  - Add, edit, and delete books.
+  - Browse books by title, author, genre, and rating.
+  - View book details, including cover image, description, and availability.
+- **User Management:**
+  - User authentication and authorization.
+  - User profile management.
+- **Borrowing Records:**
+  - Track book borrowing and return dates.
+  - Manage overdue books.
+- **Admin Interface:**
+  - Dashboard for managing books, users, and settings.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js:** A React framework for building server-rendered and statically generated web applications.
+- **TypeScript:** A superset of JavaScript that adds static typing.
+- **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
+- **Drizzle ORM:** A lightweight and type-safe Object-Relational Mapper for interacting with databases.
+- **PostgreSQL:** A powerful, open-source relational database system.
+- **NextAuth.js:** Authentication library for Next.js.
+- **Upstash:** Serverless Redis for session management and workflow.
+- **ImageKit:** Image CDN for image optimization and delivery.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Prerequisites
 
-## Learn More
+Before you begin, ensure you have the following installed:
 
-To learn more about Next.js, take a look at the following resources:
+- [Node.js](https://nodejs.org/) (version 18 or higher)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+- [PostgreSQL](https://www.postgresql.org/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1.  **Clone the repository:**
 
-## Deploy on Vercel
+    ```bash
+    git clone https://github.com/your-username/university-library.git
+    cd university-library
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2.  **Install dependencies:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-This has been deployed on vercel.
+3.  **Set up environment variables:**
+
+    - Create a `.env.local` file in the root directory.
+    - Add the following environment variables, replacing the values with your actual credentials:
+
+      ```bash
+      NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT=your_imagekit_url_endpoint
+      NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=your_imagekit_public_key
+      IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
+
+      NEXT_PUBLIC_API_ENDPOINT=http://localhost:3000
+      NEXT_PUBLIC_PROD_API_ENDPOINT=https://your-production-url.com
+
+      DATABASE_URL=postgresql://your_database_url
+      AUTH_SECRET=your_auth_secret
+
+      UPSTASH_REDIS_URL=your_upstash_redis_url
+      UPSTASH_REDIS_TOKEN=your_upstash_redis_token
+
+      RESEND_TOKEN=your_resend_token
+      ```
+
+4.  **Run database migrations:**
+
+    ```bash
+    npx drizzle-kit generate:pg
+    npx drizzle-kit push:pg
+    ```
+
+5.  **Start the development server:**
+
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+
+    Open your browser and navigate to `http://localhost:3000` to view the application.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes and commit them with descriptive messages.
+4.  Push your changes to your fork.
+5.  Submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
